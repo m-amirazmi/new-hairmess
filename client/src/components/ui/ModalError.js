@@ -1,6 +1,4 @@
-
-export default function ModalSuccess({ head, body, foot }) {
-
+export default function ModalError({ head, body, foot }) {
   const renderHead = () => {
     return (
       <div className='modal-header'>
@@ -42,6 +40,5 @@ export default function ModalSuccess({ head, body, foot }) {
       </div>
     )
   }
-
   return renderModal()
 }

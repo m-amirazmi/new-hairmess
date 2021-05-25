@@ -4,10 +4,12 @@ import axios from 'axios'
 import AuthLayout from '../../layouts/AuthLayout'
 import ModalSuccess from '../../ui/ModalSuccess'
 import { useHistory } from 'react-router'
+import ModalError from '../../ui/ModalError'
 
 export default function Register() {
 
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState('')
   const { push } = useHistory()
 
   const register = async (values, { setSubmitting }) => {
@@ -26,31 +28,35 @@ export default function Register() {
       await axios.post(URL, save)
       setSuccess(true)
     } catch (error) {
-      console.log(error.response.data.error)
+      setError(error.response.data.error)
     }
 
     setSubmitting(false)
   }
 
   const renderConfirmModal = () => {
-
-    const head = {
-      title: 'Registration Success'
-    }
-
+    const head = 'Registration Success'
     const body = (
       <div>
         <p className='text-center'>You've registered as Barber at Hairmess. Please LOGIN with the credentials that you've registered. Thank your</p>
       </div>
     )
+    const foot = <button className='btn btn-primary' onClick={() => push('/barber/login')}>LOGIN NOW</button>
 
-    const foot = (
-      <button className='btn btn-primary' onClick={() => push('/barber/login')}>LOGIN NOW</button>
-    )
+    return <ModalSuccess head={head} body={body} foot={foot} />
+  }
 
-    return (
-      <ModalSuccess head={head} body={body} foot={foot} />
+  const renderErrorModal = () => {
+    const head = 'Error'
+    const body = (
+      <div className='d-flex flex-column justify-content-center align-items-center'>
+        <i className="bi bi-exclamation-diamond fs-1 text-danger"></i>
+        <p className='text-center text-capitalize'>{error.split(':')[2]}</p>
+      </div>
     )
+    const foot = <button className='btn btn-danger' onClick={() => setError('')}>CLOSE</button>
+
+    return <ModalError head={head} body={body} foot={foot} />
   }
 
   const renderRegister = () => {
@@ -97,6 +103,7 @@ export default function Register() {
     <>
       {renderRegister()}
       {success && renderConfirmModal()}
+      {error && renderErrorModal()}
     </>
   )
 }

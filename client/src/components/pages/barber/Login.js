@@ -1,17 +1,14 @@
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router'
 import * as Yup from 'yup'
 import AuthLayout from '../../layouts/AuthLayout'
+import ModalError from '../../ui/ModalError'
 
 export default function Login() {
 
+  const [error, setError] = useState('')
   const { push } = useHistory()
-
-  useEffect(() => {
-    const ac = new AbortController
-    return () => ac.abort()
-  }, [])
 
   const login = async (values, { setSubmitting }) => {
     setSubmitting(true)
@@ -25,7 +22,7 @@ export default function Login() {
       await localStorage.setItem('jwt', JSON.stringify(user.data))
       push('/barber/dashboard')
     } catch (error) {
-      console.log(error.response.data.error)
+      setError(error.response.data.error)
     }
     setSubmitting(false)
   }
@@ -64,5 +61,23 @@ export default function Login() {
     return <AuthLayout type={type} forms={forms} submit={submit} validations={validations} />
   }
 
-  return renderLogin()
+  const renderErrorModal = () => {
+    const head = 'Error'
+    const body = (
+      <div className='d-flex flex-column justify-content-center align-items-center'>
+        <i className="bi bi-exclamation-diamond fs-1 text-danger"></i>
+        <p className='text-center text-capitalize'>{error}</p>
+      </div>
+    )
+    const foot = <button className='btn btn-danger' onClick={() => setError('')}>CLOSE</button>
+
+    return <ModalError head={head} body={body} foot={foot} />
+  }
+
+  return (
+    <>
+      {renderLogin()}
+      {error && renderErrorModal()}
+    </>
+  )
 }

@@ -38,5 +38,9 @@ small {
     top: 0;
     height: 100vh;
     z-index: 1;
+
+    &.__modal_small-width {
+      width: 500px;
+    }
   }
 }
