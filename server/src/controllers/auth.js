@@ -4,10 +4,9 @@ const { handleError } = require('../utils/handleDBError')
 
 exports.register = (req, res) => {
   const { body } = req
-
   const user = new User(body)
   user.save((error, user) => {
-    if (error) return res.status(400).json({ error: handleError(error) })
+    if (!!error) return res.status(400).json({ error: handleError(error) })
     user.salt = undefined;
     user.hashed_password = undefined;
     res.json({ user })

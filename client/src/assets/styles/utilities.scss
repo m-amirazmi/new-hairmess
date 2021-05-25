@@ -1,0 +1,42 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  color: $dark;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+small {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.__modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    content: '';
+  }
+
+  .__modal-content {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    z-index: 1;
+  }
+}

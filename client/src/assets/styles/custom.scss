@@ -1,0 +1,65 @@
+.auth {
+  height: 100vh;
+  background-color: $light;
+
+  .__barber_background {
+    position: absolute;
+    height: 50%;
+    width: 100vw;
+    background-color: $primary;
+    border-radius: 0px 0px 50px 50px;
+  }
+
+  .auth_container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .auth_card {
+      max-width: 500px;
+      border: none;
+      padding: 20px 28px;
+
+      .auth_title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+          font-weight: 300;
+          letter-spacing: 0.3rem;
+
+          span:last-child {
+            color: $primary;
+          }
+        }
+
+        p,
+        h4 {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        h4 {
+          margin-bottom: 12px;
+        }
+
+        .auth_logo {
+          width: 250px;
+        }
+
+        .auth_title_line {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          height: 3px;
+          width: 100px;
+          background-color: $primary;
+          border-radius: 20px;
+        }
+
+      }
+    }
+  }
+}
