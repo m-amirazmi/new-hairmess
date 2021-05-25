@@ -63,3 +63,84 @@
     }
   }
 }
+
+.__barber_dashboard {
+  background-color: $gray-200;
+
+  .__barber_dashboard_sidebar {
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+
+    .__barber_dashboard_logo {
+      width: 200px;
+      margin: 20px 0px;
+      padding: 8px 0px;
+    }
+
+  }
+
+  .__barber_dashboard_sidelinks {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    padding: 4px 16px;
+    width: 100%;
+    font-weight: 500;
+    margin-top: 20px;
+
+    .__barber_dashboard_link_item {
+      display: flex;
+      align-items: center;
+
+      color: $dark;
+      padding: 8px 12px;
+
+      span {
+        margin: 0px 8px;
+      }
+    }
+  }
+}
+
+.__barber_navbar {
+  height: 50px;
+  color: $dark;
+  position: fixed;
+  right: 0;
+  width: inherit;
+
+  .__barber_navbar_avatar {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 1rem;
+      padding: 0px 4px;
+    }
+
+    i {
+      padding: 0px 4px;
+    }
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+.__barber_dashboard_body {
+  background-color: $gray-200;
+  width: inherit;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  height: 100vh;
+  padding-top: 70px;
+}

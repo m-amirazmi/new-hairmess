@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
 import BarberDashboardLayout from '../../layouts/BarberDashboardLayout'
 
-export default function Profile() {
-
+export default function Settings() {
   const renderContent = () => {
     return (
       <div>
-        this is profile
+        this is settings
         <Link to='/barber/dashboard'>To dashboard</Link>
       </div>
     )
