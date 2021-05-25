@@ -1,8 +1,17 @@
 import axios from 'axios'
+import { useEffect } from 'react'
+import { useHistory } from 'react-router'
 import * as Yup from 'yup'
 import AuthLayout from '../../layouts/AuthLayout'
 
 export default function Login() {
+
+  const { push } = useHistory()
+
+  useEffect(() => {
+    const ac = new AbortController
+    return () => ac.abort()
+  }, [])
 
   const login = async (values, { setSubmitting }) => {
     setSubmitting(true)
@@ -13,8 +22,8 @@ export default function Login() {
       const user = await axios.post(URL, values, {
         withCredentials: true,
       })
-      console.log(user, user.data)
-
+      await localStorage.setItem('jwt', JSON.stringify(user.data))
+      push('/barber/dashboard')
     } catch (error) {
       console.log(error.response.data.error)
     }
