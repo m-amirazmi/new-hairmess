@@ -2,10 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
+const expressValidator = require('express-validator');
 const morgan = require('morgan')
 require('dotenv').config()
 
-const routesHome = require('./routes/home')
+const routesAuth = require('./routes/auth')
 
 const app = express()
 
@@ -18,11 +20,13 @@ mongoose.connect(process.env.DATABASE, {
 
 // MIDDLEWARES
 app.use(morgan('dev'))
+app.use(cors())
+app.use(expressValidator())
 app.use(bodyParser.json())
 app.use(cookieParser())
 
 // ROUTES
-app.use(routesHome)
+app.use('/api', routesAuth)
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Listening to port ${port}`))
