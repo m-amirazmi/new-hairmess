@@ -19,8 +19,12 @@ mongoose.connect(process.env.DATABASE, {
 }).then(() => console.log('DB Connected!'))
 
 // MIDDLEWARES
+const corsOption = {
+  credentials: true,
+  origin: true
+}
 app.use(morgan('dev'))
-app.use(cors())
+app.use(cors(corsOption))
 app.use(expressValidator())
 app.use(bodyParser.json())
 app.use(cookieParser())

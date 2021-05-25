@@ -1,7 +1,26 @@
+import axios from 'axios'
 import * as Yup from 'yup'
 import AuthLayout from '../../layouts/AuthLayout'
 
 export default function Login() {
+
+  const login = async (values, { setSubmitting }) => {
+    setSubmitting(true)
+    const { REACT_APP_API } = process.env
+    const URL = REACT_APP_API + '/login'
+
+    try {
+      const user = await axios.post(URL, values, {
+        withCredentials: true,
+      })
+      console.log(user, user.data)
+
+    } catch (error) {
+      console.log(error.response.data.error)
+    }
+    setSubmitting(false)
+  }
+
   const renderLogin = () => {
 
     const type = {
@@ -14,10 +33,8 @@ export default function Login() {
 
     const forms = {
       initialValues: {
-        name: '',
         email: '',
         password: '',
-        confirmPassword: ''
       },
       lists: [
         { label: 'Email', name: 'email', type: 'email', placeholder: 'janedoe@email.com' },
@@ -27,7 +44,7 @@ export default function Login() {
 
     const submit = {
       btnText: 'LOGIN',
-      handleSubmit: () => { },
+      handleSubmit: login,
     }
 
     const validations = Yup.object({
