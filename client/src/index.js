@@ -1,6 +1,8 @@
-import { StrictMode } from 'react';
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App';
+import 'bootstrap/dist/js/bootstrap'
+import './assets/styles/main.scss'
+import App from './components/App'
 
 const Main = () => {
   return (
