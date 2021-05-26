@@ -107,14 +107,12 @@
 }
 
 .__barber_navbar {
-  height: 50px;
   color: $dark;
-  position: fixed;
-  right: 0;
   width: inherit;
+  padding: 12px 0px;
 
   .__barber_navbar_avatar {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -126,7 +124,7 @@
     }
 
     i {
-      padding: 0px 4px;
+      padding: 0px 8px;
     }
 
     span {
@@ -136,11 +134,82 @@
 }
 
 .__barber_dashboard_body {
-  background-color: $gray-200;
+  background-color: #fff;
   width: inherit;
   position: absolute;
   right: 0;
   z-index: -1;
   height: 100vh;
-  padding-top: 70px;
+  padding-top: 20px;
+
+  .__barber_dashboard_body_container {
+    background-color: $light;
+    padding: 32px;
+    min-height: 96vh;
+  }
+}
+
+.__barber_dashboard_profile {
+  h5 {
+    font-weight: 600;
+  }
+
+
+  .__barber_profile_avatar {
+    margin-top: 16px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .__barber_dashboard_status {
+    h2 {
+      display: flex;
+      flex-direction: row;
+
+      i {
+        margin-left: auto;
+        color: $gray-500;
+        cursor: pointer;
+      }
+    }
+
+
+    h2:last-child {
+      padding: 8px 0px 0px 0px;
+
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      & .badge {
+        font-size: 0.7rem;
+      }
+
+      i {
+        margin-left: 8px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .__barber_dashboard_profile_shop {
+    h5 {
+      display: flex;
+      flex-direction: row;
+
+      & span:last-child {
+        margin-left: auto;
+        color: $gray-600;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
 }

@@ -9,13 +9,11 @@ export default function Navbar() {
     const pageName = location.pathname.split('/')[2]
     const barberName = isAuthenticated().user.name
     return (
-      <nav className='navbar navbar-light bg-primary __barber_navbar'>
+      <nav className='navbar navbar-light bg-white rounded-3 __barber_navbar'>
         <div className='container-fluid'>
-          <span className='navbar-brand mb-0 h1 text-capitalize'>{pageName}</span>
-          <div className='__barber_navbar_avatar'>
-            <p>Welcome, <span>{barberName}</span></p>
-            <i className="bi bi-person-circle"></i>
+          <div className='ms-auto __barber_navbar_avatar'>
             <i className="bi bi-bell"></i>
+            <i className="bi bi-person-circle"></i>
           </div>
         </div>
       </nav>

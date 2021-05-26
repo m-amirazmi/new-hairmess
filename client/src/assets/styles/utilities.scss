@@ -38,6 +38,9 @@ small {
     top: 0;
     height: 100vh;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &.__modal_small-width {
       width: 500px;

@@ -1,12 +1,22 @@
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import BarberDashboardLayout from '../../layouts/BarberDashboardLayout'
 
 export default function Services() {
+  const { location } = useHistory()
+
+  const renderPageName = () => {
+    const pageName = location.pathname.split('/')[3]
+    return (
+      <>
+        <h2 className='text-capitalize'>{pageName}</h2>
+      </>
+    )
+  }
+
   const renderContent = () => {
     return (
-      <div>
-        this is services
-        <Link to='/barber/dashboard'>To dashboard</Link>
+      <div className='py-4 px-2'>
+        {renderPageName()}
       </div>
     )
   }
